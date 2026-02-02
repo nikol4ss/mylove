@@ -2,51 +2,51 @@
 
 import { useRef } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
-import { Camera, Sparkles } from "lucide-react"
+import { Sparkles } from "lucide-react"
 
 interface TimelineItem {
   id: number
   chapter: string
   title: string
   description: string
+  image: string
 }
 
 const timelineData: TimelineItem[] = [
   {
     id: 1,
-    chapter: "Capitulo I",
-    title: "Lorem ipsum dolor sit amet",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    chapter: "Capítulo I",
+    title: "O Primeiro Olhar",
+    description: "A vida seguia, o destino nos chamava. Num dia comum na academia, você chegava, com o passo leve de quem dança no ar e cabelos encaracolados que faziam o mundo parar. Seus olhos eram imãs que me prendiam sem razão, e naquele instante nasceu uma emoção, tão grande que não cabe em palavras, um universo inteiro em seu sorriso se desbrava.",
+    image: "/photos/8.jpeg",
   },
   {
     id: 2,
-    chapter: "Capitulo II",
-    title: "Consectetur adipiscing elit",
-    description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    chapter: "Capítulo II",
+    title: "Onde Tudo Começou",
+    description: "Entre elogios e atenção, ganhei a chance do nosso primeiro encontro, depois de um treino intenso. Lutei para te impressionar, o personal tentou me parar, mas mal sabia que o que eu buscava era você, e nenhum esforço poderia me deter. Assim começou nossa história, simples, intensa e cheia de memória.",
+    image: "/photos/f.jpeg",
   },
   {
     id: 3,
-    chapter: "Capitulo III",
-    title: "Sed do eiusmod tempor",
-    description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    chapter: "Capítulo III",
+    title: "Nosso Primeiro Beijo",
+    description: "Levei você a um cantinho singelo, com caldo de feijão e salada de fruta, para uma menina tão doce, que mal comia um grão de feijão, mas iluminava meu mundo com seu coração. Entre risadas e histórias que contava, me perdia na beleza que de você emanava. Te convidei a me beijar, você resistiu, mas eu insisti; e então, nosso primeiro beijo veio leve e intenso, você tremia de vergonha, eu de alegria imenso.",
+    image: "/photos/10.jpeg",
   },
   {
     id: 4,
-    chapter: "Capitulo IV",
-    title: "Incididunt ut labore",
-    description: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    chapter: "Capítulo IV",
+    title: "Crescendo Juntos",
+    description: "Dali nasceu um hábito saudável, que germinava no meu coração: o desejo de estar sempre com você. Vivendo memórias que moldaram nossa decisão, pedi sua mão de forma leve e sincera, para firmar nosso laço e construir juntos um legado de amor e carinho que durará para sempre.",
+    image: "/photos/2.jpeg",
   },
   {
     id: 5,
-    chapter: "Capitulo V",
-    title: "Et dolore magna aliqua",
-    description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.",
-  },
-  {
-    id: 6,
-    chapter: "Capitulo VI",
-    title: "Ut enim ad minim veniam",
-    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni.",
+    chapter: "Capítulo V",
+    title: "Nosso Ritmo",
+    description: "E hoje cá estamos, vivendo e aprendendo, cada dia mais fortes, rindo e nos surpreendendo com nós mesmos. Viajando, criando sonhos e metas, planejando nossa família, guardando conquistas, rindo sem medo, com alegria sincera. O que temos não se apaga com água fria; aquece no calor de um abraço e na magia das nossas risadas.",
+    image: "/photos/4.jpeg",
   },
 ]
 
@@ -71,33 +71,16 @@ function TimelineCard({ item, index }: { item: TimelineItem; index: number }) {
         className="absolute left-1/2 -translate-x-1/2 top-full w-px h-24 bg-gradient-to-b from-pink-400 to-transparent max-md:hidden"
       />
 
-      {/* Content card with glassmorphism */}
-      <motion.div 
+      {/* Text content */}
+      <motion.div
         className={`flex-1 ${isEven ? "text-right max-md:text-center" : "text-left max-md:text-center"}`}
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
         <div className="backdrop-blur-md bg-white/40 rounded-3xl p-8 border border-white/30 shadow-xl hover:shadow-2xl hover:shadow-pink-200/30 transition-all duration-500 relative overflow-hidden group">
-          {/* Animated gradient overlay */}
           <motion.div
             className="absolute inset-0 bg-gradient-to-br from-pink-200/20 via-transparent to-rose-200/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           />
-          
-          {/* Floating decorative elements */}
-          <motion.div
-            animate={{ y: [-5, 5, -5], rotate: [0, 10, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="absolute top-4 right-4 opacity-30"
-          >
-            <svg width="24" height="24" viewBox="0 0 100 100" fill="rgba(236,72,153,0.5)">
-              <ellipse cx="50" cy="25" rx="12" ry="22" />
-              <ellipse cx="50" cy="75" rx="12" ry="22" />
-              <ellipse cx="25" cy="50" rx="22" ry="12" />
-              <ellipse cx="75" cy="50" rx="22" ry="12" />
-              <circle cx="50" cy="50" r="8" fill="rgba(253,224,71,0.8)" />
-            </svg>
-          </motion.div>
-
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -106,7 +89,6 @@ function TimelineCard({ item, index }: { item: TimelineItem; index: number }) {
           >
             {item.chapter}
           </motion.span>
-          
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -115,7 +97,6 @@ function TimelineCard({ item, index }: { item: TimelineItem; index: number }) {
           >
             {item.title}
           </motion.h3>
-          
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -127,7 +108,7 @@ function TimelineCard({ item, index }: { item: TimelineItem; index: number }) {
         </div>
       </motion.div>
 
-      {/* Center heart icon with effects */}
+      {/* Center heart */}
       <motion.div
         initial={{ scale: 0, rotate: -180 }}
         animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -180 }}
@@ -135,24 +116,6 @@ function TimelineCard({ item, index }: { item: TimelineItem; index: number }) {
         className="relative z-10 flex items-center justify-center"
       >
         <div className="relative">
-          {/* Pulsing rings */}
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={i}
-              animate={{
-                scale: [1, 2, 2.5],
-                opacity: [0.5, 0.2, 0],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: i * 0.4,
-              }}
-              className="absolute inset-0 rounded-full bg-pink-400/30"
-            />
-          ))}
-          
-          {/* Main heart */}
           <div className="w-20 h-20 rounded-full bg-gradient-to-br from-pink-400 via-rose-400 to-pink-500 shadow-lg shadow-pink-400/50 flex items-center justify-center">
             <motion.svg
               width="36"
@@ -168,49 +131,27 @@ function TimelineCard({ item, index }: { item: TimelineItem; index: number }) {
         </div>
       </motion.div>
 
-      {/* Image Placeholder with futuristic frame */}
+      {/* Image */}
       <div className="flex-1">
         <motion.div
           initial={{ opacity: 0, scale: 0.8, rotate: isEven ? 5 : -5 }}
           animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : { opacity: 0, scale: 0.8, rotate: isEven ? 5 : -5 }}
           transition={{ duration: 0.6, delay: 0.5, type: "spring" }}
-          className="relative group"
+          className="relative group rounded-2xl overflow-hidden border-2 border-white/50 shadow-xl"
         >
-          {/* Glowing border effect */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-pink-400 via-rose-300 to-pink-400 rounded-3xl opacity-30 group-hover:opacity-60 blur transition-all duration-500" />
-          
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-white/50 flex items-center justify-center shadow-xl">
-            {/* Animated background pattern */}
-            <div className="absolute inset-0 opacity-10">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0"
-                style={{
-                  backgroundImage: `radial-gradient(circle at 20% 20%, rgba(236,72,153,0.3) 0%, transparent 40%)`,
-                }}
-              />
-            </div>
-            
-            <div className="text-center p-6 relative z-10">
-              <motion.div
-                animate={{ y: [0, -8, 0], scale: [1, 1.1, 1] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                <Camera className="w-14 h-14 text-pink-300 mx-auto mb-3" />
-              </motion.div>
-              <p className="text-pink-400 text-sm font-medium">Adicione uma foto</p>
-            </div>
-
-            {/* Hover overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 1 }}
-              className="absolute inset-0 bg-gradient-to-t from-pink-500/20 via-transparent to-transparent flex items-end justify-center pb-6"
-            >
-              <Sparkles className="w-8 h-8 text-pink-400" />
-            </motion.div>
-          </div>
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-full h-full object-cover rounded-2xl"
+          />
+          <div className="absolute -inset-1 bg-gradient-to-r from-pink-400 via-rose-300 to-pink-400 opacity-30 group-hover:opacity-60 blur transition-all duration-500" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 1 }}
+            className="absolute inset-0 bg-gradient-to-t from-pink-500/20 via-transparent to-transparent flex items-end justify-center pb-6"
+          >
+            <Sparkles className="w-8 h-8 text-pink-400" />
+          </motion.div>
         </motion.div>
       </div>
     </motion.div>
@@ -221,73 +162,29 @@ export function TimelineSection() {
   const ref = useRef(null)
   const containerRef = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   })
-  
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
 
   return (
     <section ref={containerRef} className="py-32 px-4 relative overflow-hidden">
-      {/* Animated background */}
-      <motion.div 
-        style={{ y: backgroundY }}
-        className="absolute inset-0"
-      >
+      {/* Background gradients */}
+      <motion.div style={{ y: backgroundY }} className="absolute inset-0">
         <motion.div
-          animate={{
-            opacity: [0.2, 0.4, 0.2],
-            scale: [1, 1.2, 1],
-          }}
+          animate={{ opacity: [0.2, 0.4, 0.2], scale: [1, 1.2, 1] }}
           transition={{ duration: 8, repeat: Infinity }}
           className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-radial from-pink-300/30 via-rose-200/10 to-transparent rounded-full blur-3xl"
         />
         <motion.div
-          animate={{
-            opacity: [0.3, 0.2, 0.3],
-            scale: [1.1, 1, 1.1],
-          }}
+          animate={{ opacity: [0.3, 0.2, 0.3], scale: [1.1, 1, 1.1] }}
           transition={{ duration: 10, repeat: Infinity }}
           className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gradient-radial from-rose-300/30 via-pink-200/10 to-transparent rounded-full blur-3xl"
         />
       </motion.div>
 
-      {/* Floating flowers in background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              rotate: [0, 360],
-              opacity: [0.2, 0.4, 0.2],
-            }}
-            transition={{
-              duration: 15 + i * 2,
-              repeat: Infinity,
-              delay: i * 1.5,
-            }}
-          >
-            <svg width={30 + i * 5} height={30 + i * 5} viewBox="0 0 100 100" fill="rgba(251,113,133,0.2)">
-              <ellipse cx="50" cy="25" rx="12" ry="22" />
-              <ellipse cx="50" cy="75" rx="12" ry="22" />
-              <ellipse cx="25" cy="50" rx="22" ry="12" />
-              <ellipse cx="75" cy="50" rx="22" ry="12" />
-              <circle cx="50" cy="50" r="10" fill="rgba(253,224,71,0.4)" />
-            </svg>
-          </motion.div>
-        ))}
-      </div>
-
       <div className="max-w-6xl mx-auto relative">
-        {/* Section header */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -295,45 +192,12 @@ export function TimelineSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-24"
         >
-          <motion.div
-            animate={{ rotate: [0, 5, -5, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
-            className="inline-block mb-4"
-          >
-            <Sparkles className="w-10 h-10 text-pink-400" />
-          </motion.div>
-          
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-serif text-balance">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-400 to-pink-500">
-              Nossa Historia
+              Nossa História
             </span>
           </h2>
-          
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-muted-foreground mt-6 text-lg max-w-2xl mx-auto leading-relaxed"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-          </motion.p>
         </motion.div>
-
-        {/* Timeline Line with animated glow */}
-        <div className="absolute left-1/2 top-64 bottom-24 w-1 -translate-x-1/2 max-md:hidden overflow-hidden">
-          <motion.div
-            initial={{ height: "0%" }}
-            animate={isInView ? { height: "100%" } : { height: "0%" }}
-            transition={{ duration: 2, delay: 0.5 }}
-            className="w-full bg-gradient-to-b from-pink-400 via-rose-300 to-pink-400 rounded-full"
-          />
-          {/* Animated light moving down the line */}
-          <motion.div
-            animate={{ y: ["-100%", "100%"] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-transparent via-white to-transparent"
-          />
-        </div>
 
         <div className="space-y-32">
           {timelineData.map((item, index) => (

@@ -18,7 +18,7 @@ export function MagicCursor() {
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     setMousePos({ x: e.clientX, y: e.clientY })
-    
+
     // Add sparkle trail randomly
     if (Math.random() > 0.85) {
       const newSparkle: Sparkle = {
@@ -35,7 +35,7 @@ export function MagicCursor() {
   const handleClick = useCallback((e: MouseEvent) => {
     setIsClicking(true)
     setTimeout(() => setIsClicking(false), 300)
-    
+
     // Burst of sparkles on click
     const burst: Sparkle[] = []
     for (let i = 0; i < 8; i++) {
@@ -71,8 +71,8 @@ export function MagicCursor() {
       {/* Main cursor glow */}
       <motion.div
         className="absolute w-8 h-8 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-        animate={{ 
-          x: mousePos.x, 
+        animate={{
+          x: mousePos.x,
           y: mousePos.y,
           scale: isClicking ? 1.5 : 1,
         }}
@@ -100,8 +100,8 @@ export function MagicCursor() {
           <motion.div
             key={sparkle.id}
             initial={{ opacity: 1, scale: 1, x: sparkle.x, y: sparkle.y }}
-            animate={{ 
-              opacity: 0, 
+            animate={{
+              opacity: 0,
               scale: 0,
               y: sparkle.y - 30,
               rotate: 180,

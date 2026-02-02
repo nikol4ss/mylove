@@ -113,7 +113,7 @@ export function FooterSection() {
                   strokeLinecap="round"
                 />
               </svg>
-              
+
               {/* Orbiting heart on infinity path */}
               <motion.div
                 className="absolute"
@@ -141,7 +141,7 @@ export function FooterSection() {
 
           <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 text-balance">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-400 to-pink-500">
-              Para sempre
+              Para sempre nós
             </span>
           </h3>
 
@@ -151,7 +151,7 @@ export function FooterSection() {
             transition={{ delay: 0.4 }}
             className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cada momento ao seu lado e um presente.
+            Eu te amo, ainda vou melhorar o site, eu fiz ele nessa noite, até agora 5:20
           </motion.p>
 
           {/* Animated date/counter */}
@@ -172,9 +172,7 @@ export function FooterSection() {
               >
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
               </motion.svg>
-              <span className="text-foreground font-serif text-xl">
-                Feito com amor
-              </span>
+     
               <motion.svg
                 width="24"
                 height="24"
